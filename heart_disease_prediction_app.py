@@ -27,17 +27,9 @@ if st.button("Predict"):
     # Process input values
     input_data = pd.DataFrame(
         {
-            "Age": [Age],
-            "RestingBP": [Resting_Blood_Pressure],
             "Cholesterol": [Cholesterol],
-            "FastingBS": [Fasting_blood_sugar],
             "MaxHR": [Max_heart_rate],
             "Oldpeak": [Oldpeak],
-            "Sex_M": [1 if Sex == "M" else 0],
-            "ChestPainType_ATA": [1 if ChestPainType=='ATA' else 0],
-            "ChestPainType_NAP": [1 if ChestPainType=='NAP' else 0],
-            "ChestPainType_TA": [1 if ChestPainType=='TA' else 0],
-            "RestingECG_Normal": [1 if Resting_electrocardiographic_results=='Normal' else 0],
             "RestingECG_ST": [1 if Resting_electrocardiographic_results=='ST' else 0],
             "ExerciseAngina_Y":[1 if ExerciseAngina == 'Y' else 0],
             "ST_Slope_Flat":[1 if ST_Slope == 'Flat' else 0],
@@ -52,7 +44,7 @@ if st.button("Predict"):
     prediction = model.predict(input_data_scaled)
     
     # Display the prediction
-    if prediction[0] == 1:
+    if prediction == 1:
         st.error("High risk of heart disease.")
     else:
         st.success("Low risk of heart disease.")
