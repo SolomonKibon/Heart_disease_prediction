@@ -44,7 +44,7 @@ if st.button("Predict"):
     prediction = model.predict(input_data_scaled)
     
     # Display the prediction
-    if prediction == 1:
+    if prediction[0] == 1:
         st.error("High risk of heart disease.")
     else:
         st.success("Low risk of heart disease.")
